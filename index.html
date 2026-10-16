@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinGuard AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 1. AUTHENTICATION SECTION -->
+        <div id="login-section" class="card auth-card">
+            <h2>FinGuard AI</h2>
+            <p class="subtitle">Secure AI Financial Management</p>
+            <form id="auth-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <div class="button-group">
+                    <button type="button" id="login-btn" class="btn btn-primary">Login</button>
+                    <button type="button" id="signup-btn" class="btn btn-outline">Sign Up</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 2. BIOMETRIC SECTION -->
+        <div id="biometric-section" class="card auth-card hidden">
+            <h2>Biometric Verification</h2>
+            <div class="icon-box">🔐</div>
+            <p class="subtitle">Complete biometric scan to authenticate your session.</p>
+            <button id="biometric-btn" class="btn btn-success">Verify Biometric</button>
+        </div>
+
+        <!-- 3. LINK BANK SECTION -->
+        <div id="bank-section" class="card auth-card hidden">
+            <h2>Link Bank Account</h2>
+            <p class="subtitle">Enter mobile number and select bank</p>
+            <form id="bank-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label>Mobile Number (Bank Linked)</label>
+                    <input type="tel" id="phone" pattern="[0-9]{10}" maxlength="10" required placeholder="10 Digit Mobile Number">
+                </div>
+                <div class="form-group">
+                    <label>Select Your Bank</label>
+                    <select id="bank-select" required>
+                        <option value="" disabled selected>Choose a Bank</option>
+                    </select>
+                </div>
+                <button type="button" id="send-bank-otp-initial-btn" class="btn btn-primary">Send OTP</button>
+            </form>
+        </div>
+
+        <!-- 4. OTP VERIFICATION SECTION -->
+        <div id="otp-section" class="card auth-card hidden">
+            <h2>OTP Verification</h2>
+            <p class="subtitle">Enter 6-digit OTP sent to your mobile number to link account.</p>
+            <form id="otp-form" onsubmit="return false;">
+                <div class="form-group">
+                    <input type="text" id="login-otp-input" maxlength="6" placeholder="Enter 6-digit OTP" required style="text-align: center; letter-spacing: 4px; font-size: 1.2rem;">
+                </div>
+                <button type="button" id="verify-login-otp-btn" class="btn btn-success">Verify & Link Account</button>
+            </form>
+        </div>
+
+        <!-- 5. MAIN APP INTERFACE -->
+        <div id="main-app" class="hidden">
+            <!-- App Header -->
+            <header class="app-header">
+                <h1 class="brand-title">FinGuard</h1>
+                <div class="user-info">
+                    <span id="user-display">User</span>
+                    <button id="logout-btn" class="btn-logout">Logout</button>
+                </div>
+            </header>
+
+            <!-- TAB 1: DASHBOARD VIEW -->
+            <div id="tab-dashboard" class="tab-content">
+                <div class="dashboard-card shadow-sm">
+                    <small class="card-label">TOTAL AGGREGATED BALANCE</small>
+                    <h2 class="main-balance" id="display-total-balance">₹3,79,500.00</h2>
+                    <div class="bank-tags" id="bank-tags-container">
+                        <span class="bank-tag" data-bank="Indian Bank">✓ Indian Bank <small class="remove-bank" style="cursor:pointer; margin-left:5px;">✕</small></span>
+                        <span class="bank-tag" data-bank="State Bank of India">✓ State Bank of India <small class="remove-bank" style="cursor:pointer; margin-left:5px;">✕</small></span>
+                        <span class="bank-tag" data-bank="Union Bank of India">✓ Union Bank of India <small class="remove-bank" style="cursor:pointer; margin-left:5px;">✕</small></span>
+                        <span class="bank-tag" data-bank="Central Bank of India">✓ Central Bank of India <small class="remove-bank" style="cursor:pointer; margin-left:5px;">✕</small></span>
+                    </div>
+                    <button class="add-bank-btn" id="open-add-bank-modal-btn">+ Add Another Bank Account</button>
+                </div>
+
+                <div class="dashboard-card forecast-card shadow-sm">
+                    <small class="card-label purple-text">🔮 NEXT MONTH FORECAST (OCTOBER 2026)</small>
+                    <h2 class="forecast-balance" id="display-forecast-balance">₹28,237.00</h2>
+                    <p class="forecast-sub">Calculated across <span id="linked-account-count">4</span> linked account(s) <a href="#" id="view-forecast-btn" class="link-text">View Spend Forecast →</a></p>
+                </div>
+            </div>
+
+            <!-- TAB 2: CATEGORY VIEW -->
+            <div id="tab-category" class="tab-content hidden">
+                <div class="dashboard-card shadow-sm">
+                    <h3 class="section-title">Monthly Expenses by Category</h3>
+                    
+                    <div class="list-item clickable-category" data-category="food">
+                        <div class="item-left">
+                            <span class="item-icon">🍔</span>
+                            <div>
+                                <h4>Food & Dining</h4>
+                                <small>Swiggy, Zomato, Restaurants</small>
+                            </div>
+                        </div>
+                        <span class="item-amount">₹12,400.00</span>
+                    </div>
+
+                    <div class="list-item clickable-category" data-category="shopping">
+                        <div class="item-left">
+                            <span class="item-icon">🛍️</span>
+                            <div>
+                                <h4>Shopping & Apparel</h4>
+                                <small>Amazon, Myntra, Retail</small>
+                            </div>
+                        </div>
+                        <span class="item-amount">₹8,200.00</span>
+                    </div>
+
+                    <div class="list-item clickable-category" data-category="bills">
+                        <div class="item-left">
+                            <span class="item-icon">⚡</span>
+                            <div>
+                                <h4>Bills & Subscriptions</h4>
+                                <small>Electricity, Wi-Fi, OTT Services</small>
+                            </div>
+                        </div>
+                        <span class="item-amount">₹3,500.00</span>
+                    </div>
+
+                    <div class="list-item clickable-category" data-category="others">
+                        <div class="item-left">
+                            <span class="item-icon">🛒</span>
+                            <div>
+                                <h4>Others & Miscellaneous</h4>
+                                <small>Fuel, Travel, Cash Withdrawals</small>
+                            </div>
+                        </div>
+                        <span class="item-amount">₹2,045.00</span>
+                    </div>
+                </div>
+            </div>
+
+           <!-- TAB 3: SUBSCRIPTIONS VIEW -->
+            <div id="tab-subscriptions" class="tab-content hidden">
+                <div class="dashboard-card shadow-sm">
+                    <h3 class="section-title">Active Subscriptions</h3>
+                    <div class="list-item">
+                        <div class="sub-info">
+                            <h4>Netflix Premium</h4>
+                            <p>Renews on Oct 01, 2026 • <span class="tx-bank-badge">🏦 State Bank of India</span></p>
+                        </div>
+                        <span class="item-amount">₹649.00/mo</span>
+                    </div>
+                    <div class="list-item">
+                        <div class="sub-info">
+                            <h4>Spotify Individual</h4>
+                            <p>Renews on Oct 05, 2026 • <span class="tx-bank-badge">🏦 Indian Bank</span></p>
+                        </div>
+                        <span class="item-amount">₹119.00/mo</span>
+                    </div>
+                    <div class="list-item">
+                        <div class="sub-info">
+                            <h4>Amazon Prime</h4>
+                            <p>Renews on Nov 12, 2026 • <span class="tx-bank-badge">🏦 Union Bank of India</span></p>
+                        </div>
+                        <span class="item-amount">₹1,499.00/yr</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM NAVIGATION BAR -->
+            <nav class="bottom-nav">
+                <button class="nav-item active" id="nav-dash">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Dashboard</span>
+                </button>
+                <button class="nav-item" id="nav-cat">
+                    <span class="nav-icon">🏷️</span>
+                    <span class="nav-label">Category</span>
+                </button>
+                <button class="nav-item" id="nav-sub">
+                    <span class="nav-icon">🔄</span>
+                    <span class="nav-label">Subscriptions</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- ADD BANK POPUP MODAL -->
+        <div id="add-bank-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <button class="close-modal-btn" id="close-modal-btn">✕</button>
+                
+                <div id="modal-step-bank">
+                    <h3>Add Bank Account</h3>
+                    <p class="subtitle">Select your bank & link account</p>
+                    <form id="modal-bank-form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label>Mobile Number (Bank Linked)</label>
+                            <input type="tel" id="modal-phone" pattern="[0-9]{10}" maxlength="10" required placeholder="10 Digit Mobile Number">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Bank</label>
+                            <select id="modal-bank-select" required>
+                                <option value="" disabled selected>Choose a Bank</option>
+                            </select>
+                        </div>
+                        <button type="button" id="send-bank-otp-btn" class="btn btn-primary">Send OTP</button>
+                    </form>
+                </div>
+
+                <div id="modal-step-otp" class="hidden">
+                    <h3>Verify Bank OTP</h3>
+                    <p class="subtitle">Enter OTP sent for Bank Verification</p>
+                    <form id="modal-otp-form" onsubmit="return false;">
+                        <div class="form-group">
+                            <input type="text" id="modal-otp-input" maxlength="6" placeholder="Enter 6-digit OTP" required style="text-align: center; letter-spacing: 4px; font-size: 1.2rem;">
+                        </div>
+                        <button type="button" id="verify-bank-otp-btn" class="btn btn-success">Verify & Link Bank</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPEND FORECAST BOTTOM MODAL SHEET -->
+        <div id="forecast-modal" class="modal-overlay hidden">
+            <div class="bottom-sheet-content">
+                <div class="modal-header">
+                    <h3>🔮 Next Month Spend Forecast</h3>
+                    <button class="close-modal-btn" id="close-forecast-modal-btn">✕</button>
+                </div>
+                <p class="forecast-subtitle">Projected Spend (+8% trend): <strong id="modal-projected-header">₹28,237.00</strong></p>
+
+                <div class="forecast-box">
+                    <h4 class="forecast-box-title">📊 Predicted Category Projections</h4>
+                    <div class="forecast-row">
+                        <span>🍔 Food & Dining:</span>
+                        <span class="amount" id="modal-food-amount">~₹13,392.00</span>
+                    </div>
+                    <div class="forecast-row">
+                        <span>🛍️ Shopping & Apparel:</span>
+                        <span class="amount" id="modal-shopping-amount">~₹8,856.00</span>
+                    </div>
+                    <div class="forecast-row">
+                        <span>⚡ Bills & Subscriptions:</span>
+                        <span class="amount" id="modal-bills-amount">~₹3,780.00</span>
+                    </div>
+                    <div class="forecast-row">
+                        <span>🛒 Others & Miscellaneous:</span>
+                        <span class="amount" id="modal-others-amount">~₹2,209.00</span>
+                    </div>
+                    <hr class="forecast-divider">
+                    <div class="forecast-row total-row">
+                        <strong>Total Projected Spend:</strong>
+                        <strong class="total-amount" id="modal-total-amount">₹28,237.00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY TRANSACTIONS BOTTOM MODAL SHEET -->
+        <div id="category-modal" class="modal-overlay hidden">
+            <div class="bottom-sheet-content category-sheet">
+                <div class="modal-header">
+                    <h3 id="cat-modal-title">🍔 Food & Dining Transactions</h3>
+                    <button class="close-modal-btn" id="close-cat-modal-btn">✕</button>
+                </div>
+                <p class="forecast-subtitle">Total Current Spend: <strong id="cat-modal-total">₹12,400.00</strong></p>
+
+                <div class="tx-list" id="cat-tx-list">
+                    <!-- Dynamic Transaction Items injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* App Container */
+.app-container {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    min-height: 840px;
+    border-radius: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* Card & Auth Section */
+.card {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.auth-card {
+    text-align: center;
+    margin: auto 0;
+}
+
+.auth-card h2 {
+    color: #0284c7;
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.icon-box {
+    font-size: 3rem;
+    margin: 1.5rem 0;
+}
+
+/* Form Controls */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.4rem;
+}
+
+.form-group input, 
+.form-group select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background-color: #f8fafc;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: #0284c7;
+    background-color: #ffffff;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0369a1;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+}
+
+.btn-outline:hover {
+    background-color: #f1f5f9;
+}
+
+.btn-success {
+    background-color: #10b981;
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #059669;
+}
+
+/* Main App Header */
+#main-app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.app-header {
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.btn-logout {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #e2e8f0;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Tab Views Container */
+.tab-content {
+    padding: 1.25rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 80px;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #64748b;
+}
+
+.main-balance {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0.4rem 0 1rem 0;
+}
+
+/* Bank Tags */
+.bank-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.bank-tag {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.remove-bank {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+.remove-bank:hover {
+    color: #dc2626;
+}
+
+.add-bank-btn {
+    width: 100%;
+    padding: 0.65rem;
+    background-color: #f8fafc;
+    border: 1px dashed #94a3b8;
+    color: #475569;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-bank-btn:hover {
+    background-color: #f1f5f9;
+    border-color: #0284c7;
+    color: #0284c7;
+}
+
+/* Savings & Analysis Summary Box */
+.savings-summary-card {
+    background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
+    color: #ffffff;
+    padding: 1.25rem;
+    border-radius: 18px;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 10px 15px -3px rgba(4, 120, 87, 0.3);
+}
+
+.savings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.savings-header h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #34d399;
+}
+
+.savings-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.savings-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    color: #ecfdf5;
+}
+
+.savings-row strong {
+    color: #ffffff;
+}
+
+.savings-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0.75rem 0;
+}
+
+.savings-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.savings-total-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.savings-total-amount {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #a7f3d0;
+}
+
+/* Bank Breakdown List in Analysis */
+.bank-savings-breakdown {
+    margin-top: 0.75rem;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.75rem;
+    border-radius: 10px;
+}
+
+.bank-savings-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #a7f3d0;
+    margin-bottom: 0.4rem;
+}
+
+.bank-savings-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #f0fdf4;
+    margin-bottom: 0.25rem;
+}
+
+.bank-savings-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Category & List Elements */
+.section-title {
+    font-size: 1rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.clickable-category {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.85rem 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.clickable-category:hover {
+    background-color: #f8fafc;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.item-amount {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Subscriptions Specific & Spend Reduction Controls */
+.sub-info h4 {
+    font-size: 0.9rem;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.sub-info p {
+    font-size: 0.75rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.sub-right {
+    text-align: right;
+}
+
+.sub-reduction-box {
+    margin-top: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.sub-reduction-box label {
+    font-size: 0.7rem;
+    color: #059669;
+    font-weight: 600;
+}
+
+.sub-reduction-input {
+    width: 80px;
+    padding: 0.25rem 0.4rem;
+    font-size: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    text-align: right;
+}
+
+.sub-reduction-input:focus {
+    border-color: #10b981;
+}
+
+.extra-money-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: #047857;
+    background-color: #d1fae5;
+    padding: 0.15rem 0.45rem;
+    border-radius: 6px;
+    font-weight: 700;
+    margin-top: 0.25rem;
+}
+
+/* Bottom Navigation Bar */
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background-color: #0f172a;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75rem;
+    cursor: pointer;
+    gap: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+}
+
+.nav-item.active {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* Modal Overlay Base */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 999;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 1.8rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.close-modal-btn:hover {
+    color: #0f172a;
+}
+
+/* Bottom Sheet Modal Styling */
+.bottom-sheet-content {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease-out forwards;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.tx-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.tx-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.tx-item:last-child {
+    border-bottom: none;
+}
+
+.tx-info h5 {
+    font-size: 0.9rem;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.tx-info p {
+    font-size: 0.75rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tx-bank-badge {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.45rem;
+    border-radius: 6px;
+}
+
+.tx-amount {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ef4444;
+}
